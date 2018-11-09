@@ -10,9 +10,9 @@ class ApiController < ApplicationController
     response.content_type = "application/json"
     if params[:folder] == "all"
       response.status_code = 200
-      return ["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "travertine", "pocketmine", "nukkit", "hose", "pixelmon"].to_pretty_json.to_s
+      return ["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "pocketmine", "nukkit", "hose", "pixelmon"].to_pretty_json.to_s
     end
-    return "{\"error\": \"Invalid request.\"}" if !["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "travertine", "pocketmine", "nukkit", "hose", "pixelmon"].includes?(params[:folder].downcase)
+    return "{\"error\": \"Invalid request.\"}" if !["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "pocketmine", "nukkit", "hose", "pixelmon"].includes?(params[:folder].downcase)
     response.status_code = 200
     files = Dir.glob("#{Dir.current}/public/files/#{params[:folder].downcase}/*")
     table = [] of String
@@ -35,7 +35,7 @@ class ApiController < ApplicationController
   def file
     response.status_code = 400
     response.content_type = "application/json"
-    return "{\"error\": \"Invalid request.\"}" if !["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "travertine", "pocketmine", "nukkit", "hose", "pixelmon"].includes?(params[:folder].downcase)
+    return "{\"error\": \"Invalid request.\"}" if !["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "pocketmine", "nukkit", "hose", "pixelmon"].includes?(params[:folder].downcase)
     if !File.exists?("#{Dir.current}/public/files/#{params[:folder].downcase}/#{params[:file]}")
         return "{\"error\": \"File doesn't exist.\"}"
     end
@@ -131,21 +131,6 @@ class ApiController < ApplicationController
       elsif rgex < 62
         version = "1.7.10 - 1.9.x"
       end
-    elsif @name == "Travertine"
-      version = "1.7.10 - 1.12.x"
-      rgex = /Travertine-b(.*).jar/.match(filename).try &.[1].to_i32
-      if rgex.nil?
-        rgex = 1
-      end
-      if rgex > 27
-        version = "1.7.10 - 1.13.x"
-      elsif rgex < 27
-        version = "1.7.10 - 1.12.x"
-      end
-      if filename.includes?("latest")
-        version = "Latest"
-      end
-    end
     if size == "0 Bytes"
       response.status_code = 400
       response.content_type = "application/json"

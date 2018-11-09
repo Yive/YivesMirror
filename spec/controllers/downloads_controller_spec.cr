@@ -72,11 +72,6 @@ describe DownloadsController do
     end
   end
 
-  describe "DownloadsController#travertine" do
-    it "renders the view" do
-    end
-  end
-
   describe "DownloadsController#bungeecord" do
     it "renders the view" do
     end

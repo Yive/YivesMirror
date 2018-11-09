@@ -2,7 +2,7 @@ require "cossack"
 
 class DownloadController < ApplicationController
   def index
-    array = ["bukkit","craftbukkit","spigot","paper","tacospigot","hexacord","torch","pocketmine","nukkit","travertine", "minecraft"]
+    array = ["bukkit","craftbukkit","spigot","paper","tacospigot","hexacord","torch","pocketmine","nukkit","minecraft"]
     array.each do |check|
       if check == "minecraft"
         check_version_json = Cossack.get("https://launchermeta.mojang.com/mc/game/version_manifest.json").body
