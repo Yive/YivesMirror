@@ -2,7 +2,7 @@ require "json"
 
 class DownloadsController < ApplicationController
   def index
-    redirect_to(location: "/", status: 302) if !["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "travertine", "pocketmine", "nukkit", "hose", "pixelmon"].includes?(params[:folder].downcase)
+    redirect_to(location: "/", status: 302) if !["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "pocketmine", "nukkit", "hose", "pixelmon"].includes?(params[:folder].downcase)
     files = Dir.glob("#{Dir.current}/public/files/#{params[:folder].downcase}/*")
     files.sort! do |one, two|
       (File.info(two).modification_time.epoch - File.info(one).modification_time.epoch).to_i32
@@ -100,21 +100,6 @@ class DownloadsController < ApplicationController
         elsif rgex < 62
           version = "1.7.10 - 1.9.x"
         end
-      elsif @name == "Travertine"
-        version = "1.7.10 - 1.12.x"
-        rgex = /Travertine-b(.*).jar/.match(filename).try &.[1].to_i32
-        if rgex.nil?
-          rgex = 1
-        end
-        if rgex > 27
-          version = "1.7.10 - 1.13.x"
-        elsif rgex < 27
-          version = "1.7.10 - 1.12.x"
-        end
-        if filename.includes?("latest")
-          version = "Latest"
-        end
-      end
       if size == "0 Bytes"
         next
       end
