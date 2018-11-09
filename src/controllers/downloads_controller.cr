@@ -100,6 +100,7 @@ class DownloadsController < ApplicationController
         elsif rgex < 62
           version = "1.7.10 - 1.9.x"
         end
+      end
       if size == "0 Bytes"
         next
       end

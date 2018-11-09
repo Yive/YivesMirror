@@ -131,6 +131,7 @@ class ApiController < ApplicationController
       elsif rgex < 62
         version = "1.7.10 - 1.9.x"
       end
+    end
     if size == "0 Bytes"
       response.status_code = 400
       response.content_type = "application/json"
