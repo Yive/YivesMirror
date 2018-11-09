@@ -1,0 +1,51 @@
+name: yives_mirror
+version: 0.1.0
+
+authors:
+  - Yive <admin@yive.me>
+
+crystal: 0.26.1
+
+license: UNLICENSED
+
+targets:
+  yives_mirror:
+    main: src/yives_mirror.cr
+
+  amber:
+    main: lib/amber/src/amber/cli.cr
+
+dependencies:
+  amber:
+    github: amberframework/amber
+    version: 0.9.0
+    #branch: master
+
+  granite:
+    github: amberframework/granite
+    version: ~> 0.13.0
+
+  quartz_mailer:
+    github: amberframework/quartz-mailer
+    version: ~> 0.5.1
+
+  jasper_helpers:
+    github: amberframework/jasper-helpers
+    version: ~> 0.2.0
+
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+    version: ~> 0.10.0
+
+  citrine-i18n:
+    github: amberframework/citrine-i18n
+    version: 0.3.2
+
+  cossack:
+    github: crystal-community/cossack
+    version: ~> 0.1
+
+development_dependencies:
+ garnet_spec:
+   github: amberframework/garnet-spec
+   version: ~> 0.2.1

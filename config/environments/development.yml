@@ -1,0 +1,30 @@
+secret_key_base: mpPYuCyd83sp8m1KU0f9ppEBDizq_VdFeM3Dci6xMDk
+port: 3005
+name: yives_mirror
+logging:
+  severity: debug
+  colorize: true
+  filter:
+    - password
+    - confirm_password
+  skip:
+    -
+  context:
+    - request
+    - headers
+
+host: 0.0.0.0
+port_reuse: true
+process_count: 1
+# ssl_key_file:
+# ssl_cert_file:
+redis_url: "redis://localhost:6379"
+database_url: sqlite3:./db/yives_mirror_development.db
+session:
+  key: amber.session
+  store: signed_cookie
+  expires: 0
+
+secrets:
+  description: Store your development secrets credentials and settings here.
+

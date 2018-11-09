@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Yive's Mirror | <%= @page %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:site_name" content="Yive's Mirror" />
+    <meta property="og:title" content="<%= @page %>" />
+    <% if @page == "Paper Downloads" %>
+      <meta property="og:description" content="Downloads for Paper/PaperSpigot." />
+      <meta name="description" content="Downloads for Paper/PaperSpigot.">
+      <meta name="keywords" content="paper download, paperspigot download, yivesmirror paper, yivesmirror paperspigot">
+    <% elsif @page == "Spigot Downloads" %>
+      <meta property="og:description" content="Downloads for Spigot." />
+      <meta name="description" content="Downloads for Spigot.">
+      <meta name="keywords" content="spigot download, yivesmirror spigot">
+    <% elsif @page == "TacoSpigot Downloads" %>
+      <meta property="og:description" content="Downloads for TacoSpigot." />
+      <meta name="description" content="Downloads for TacoSpigot.">
+      <meta name="keywords" content="tacospigot download, yivesmirror tacospigot">
+    <% elsif @page == "CraftBukkit Downloads" %>
+      <meta property="og:description" content="Downloads for CraftBukkit." />
+      <meta name="description" content="Downloads for Craftbukkit.">
+      <meta name="keywords" content="craftbukkit download, yivesmirror craftbukkit">
+    <% elsif @page == "Bukkit Downloads" %>
+      <meta property="og:description" content="Downloads for Bukkit." />
+      <meta name="description" content="Downloads for Bukkit.">
+      <meta name="keywords" content="craftbukkit download, yivesmirror craftbukkit">
+    <% elsif @page == "Cauldron Downloads" %>
+      <meta property="og:description" content="Downloads for Cauldron." />
+      <meta name="description" content="Downloads for Cauldron.">
+      <meta name="keywords" content="cauldron download, yivesmirror cauldron">
+    <% elsif @page == "MCPC+ Downloads" %>
+      <meta property="og:description" content="Downloads for MCPC+." />
+      <meta name="description" content="Downloads for MCPC+.">
+      <meta name="keywords" content="mcpc download, yivesmirror mcpc, craftbukkitplusplus download">
+    <% elsif @page == "HexaCord Downloads" %>
+      <meta property="og:description" content="Downloads for HexaCord." />
+      <meta name="description" content="Downloads for HexaCord.">
+      <meta name="keywords" content="hexacord download, yivesmirror hexacord">
+    <% elsif @page == "Travertine Downloads" %>
+      <meta property="og:description" content="Downloads for Travertine." />
+      <meta name="description" content="Downloads for Travertine.">
+      <meta name="keywords" content="travertine download, yivesmirror travertine">
+    <% elsif @page == "Torch Downloads" %>
+      <meta property="og:description" content="Downloads for Torch." />
+      <meta name="description" content="Downloads for Torch.">
+      <meta name="keywords" content="torch download, yivesmirror torch">
+    <% elsif @page == "HOSE Downloads" %>
+      <meta property="og:description" content="Downloads for HOSE." />
+      <meta name="description" content="Downloads for HOSE.">
+      <meta name="keywords" content="hose download, yivesmirror hose">
+    <% else %>
+      <meta property="og:description" content="Downloads for server software to run Minecraft servers." />
+      <meta name="description" content="Downloads for server software to run Minecraft servers.">
+      <meta name="keywords" content="yivesmirror, minecraft server download">
+    <% end %>
+    <meta property="og:url" content="<%= @url %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://yivesmirror.com/dist/icon.png" />
+    <meta name="author" content="Yive">
+    <link rel="stylesheet" href="/dist/bulma.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" />
+    <style>
+      .panel-block {
+        display: block;
+      }
+      .hero.is-info .tabs.is-boxed a:hover,
+      .hero.is-info .tabs.is-toggle a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .title a {
+        color: inherit;
+      }
+      .modal-content .panel .panel-block {
+        background-color: white;
+      }
+      .modal-content .panel .panel-heading {
+        border-top-left-radius:0;
+        border-top-right-radius:0;
+      }
+    </style>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <head>
+  <body>
+    <section class="hero is-info is-medium" style="background-repeat: no-repeat;background-size: cover;background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/dist/header.jpg);background-position: center;">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title is-2">Yive's Mirror</h1>
+          <h2 class="subtitle">Minecraft Server Software File Mirror</h2>
+        </div>
+      </div>
+      <div class="hero-foot">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-6">
+              <nav class="tabs is-boxed">
+                <ul>
+                  <%= render(partial: "layouts/_nav.ecr") %>
+                </ul>
+              </nav>
+            </div>
+            <div class="column is-6">
+              <nav class="tabs is-boxed is-right">
+                <ul>
+                  <%= render(partial: "layouts/_navend.ecr") %>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="columns is-multiline">
+          <%= content %>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p><strong>Yive's Mirror</strong> is not affliated with Mojang nor any of the software hosted here.</p>
+        </div>
+      </div>
+    </footer>
+    <div class="modal" id="downloads-modal">
+      <div class="modal-background close-modal" data-modal-id="#downloads-modal"></div>
+      <div class="modal-content">
+        <nav class="panel">
+          <p class="panel-heading">Vanilla</p>
+          <a class="panel-block" href="/downloads/paper">Paper <span class="tag is-success is-pulled-right"><i class="fas fa-star"></i></span></a>
+          <a class="panel-block" href="/downloads/spigot">Spigot</a>
+          <a class="panel-block" href="/downloads/tacospigot">TacoSpigot <span class="tag is-danger is-pulled-right">Abandoned</span></span></a>
+          <a class="panel-block" href="/downloads/craftbukkit">Craftbukkit</a>
+          <a class="panel-block" href="https://glowstone.net/#downloads">Glowstone <span class="tag is-info is-pulled-right">External</span></a>
+          <a class="panel-block" href="https://www.spongepowered.org/downloads/spongevanilla">SpongeVanilla <span class="tag is-info is-pulled-right">External</span></a>
+          <p class="panel-heading">Forge</p>
+          <a class="panel-block" href="https://www.spongepowered.org/downloads/spongeforge">SpongeForge <span class="is-pulled-right"><span class="tag is-success"><i class="fas fa-star"></i></span> <span class="tag is-info">External</span></span></a>
+          <a class="panel-block" href="/downloads/thermos">Thermos <span class="is-pulled-right"><span class="tag is-success"><i class="fas fa-star"></i></span> <span class="tag is-danger">Abandoned</span></span></a>
+          <a class="panel-block" href="/downloads/cauldron">Cauldron <span class="tag is-danger is-pulled-right">Abandoned</span></a>
+          <a class="panel-block" href="/downloads/mcpc">MCPC+ <span class="tag is-danger is-pulled-right">Abandoned</span></a>
+          <p class="panel-heading">Proxies</p>
+          <a class="panel-block" href="https://www.velocitypowered.com/downloads">Velocity <span class="is-pulled-right"><span class="tag is-success"><i class="fas fa-star"></i></span> <span class="tag is-info">External</span></span></a>
+          <a class="panel-block" href="http://ci.lilypadmc.org/">Lilypad <span class="is-pulled-right"> <span class="tag is-info">External</span></span></a>
+          <a class="panel-block" href="https://ci.destroystokyo.com/job/Waterfall/">Waterfall <span class="tag is-info is-pulled-right">External</span></a>
+          <a class="panel-block" href="/downloads/hexacord">HexaCord</a>
+          <a class="panel-block" href="/downloads/travertine">Travertine</a>
+          <a class="panel-block" href="https://ci.md-5.net/job/BungeeCord/">BungeeCord <span class="tag is-info is-pulled-right">External</span></a>
+          <p class="panel-heading">Pocket Edition</p>
+          <a class="panel-block" href="https://ci.appveyor.com/project/NiclasOlofsson/MiNET/branch/master/artifacts">MiNet <span class="is-pulled-right"><span class="tag is-success"><i class="fas fa-star"></i></span> <span class="tag is-info">External</span></span></a>
+          <a class="panel-block" href="https://github.com/pmmp/PocketMine-MP/releases">PocketMine <span class="tag is-info is-pulled-right">External</span></a>
+          <a class="panel-block" href="https://ci.nukkitx.com/job/NukkitX/job/Nukkit/job/master/">Nukkit <span class="tag is-info is-pulled-right">External</span></a>
+          <p class="panel-heading">Multi-Threaded</p>
+          <a class="panel-block" href="/downloads/torch">Torch <span class="tag is-danger is-pulled-right">Abandoned</span></a>
+          <a class="panel-block" href="/downloads/hose">HOSE <span class="tag is-danger is-pulled-right">Abandoned</span></a>
+          <p class="panel-heading">Other</p>
+          <a class="panel-block" href="/downloads/bukkit">Bukkit</a>
+          <a class="panel-block" href="/downloads/pixelmon">Pixelmon <span class="tag is-danger is-pulled-right">Abandoned</span></a>
+          <div class="panel-block">
+            <p><span class="tag is-info">External</span> - Outgoing link to an external download location.</p>
+            <p><span class="tag is-danger">Abandoned</span> - Project was abandoned by its developers.</p>
+            <p><span class="tag is-success"><i class="fas fa-star"></i></span> - Recommended.</p>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52657458-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-52657458-3');
+    </script>
+    <script src="/dist/jquery.min.js"></script>
+    <script>
+      function toggleModalClasses(event) {
+          var modalId = event.currentTarget.dataset.modalId;
+          var modal = $(modalId);
+          modal.toggleClass('is-active');
+          $('html').toggleClass('is-clipped');
+        };
+
+      $('.open-modal').click(toggleModalClasses);
+      $('.close-modal').click(toggleModalClasses);
+
+      $("input:checkbox").click(function () {
+        var showAll = true;
+        $('tr').not('.first').hide();
+        $('input[type=checkbox]').each(function () {
+            if ($(this)[0].checked) {
+                showAll = false;
+                var status = $(this).attr('rel');
+                var value = $(this).val();            
+                $('td.' + status + '[rel="' + value + '"]').parent('tr').show();
+            }
+        });
+        if(showAll){
+            $('tr').show();
+        }
+      });
+      $(document).ready(function(){
+        $("#search").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

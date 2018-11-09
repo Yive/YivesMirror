@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    image: yives_mirror
+    command: amber watch
+    environment:
+      DATABASE_URL: sqlite3:./db/yives_mirror_development.db
+    ports:
+      - 3000:3000
+    links:
+      - db
+    volumes:
+    - .:/app
+    - nodes:/app/node_modules
+    - shards:/app/lib
+
+  migrate:
+    build: .
+    image: yives_mirror
+    command: bash -c 'amber db migrate seed'
+    environment:
+      DATABASE_URL: sqlite3:./db/yives_mirror_development.db
+    volumes:
+      - .:/app
+    links:
+      - db
+
+  db:
+    image: yives_mirror
+    command: 'bash -c "ls > /dev/null"'
+    volumes:
+    - db:/app/local/db
+
+volumes:
+  db:
+  nodes:
+  shards:
