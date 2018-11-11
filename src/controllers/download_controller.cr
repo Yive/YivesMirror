@@ -29,7 +29,7 @@ class DownloadController < ApplicationController
       end
       check_json = JSON.parse(check_json)
       check_json.as_h.each do |key, file|
-        if Time.now.epoch - check_json["#{key}"]["date"].as_i64 < 3600
+        if Time.now.to_unix - check_json["#{key}"]["date"].as_i64 < 3600
           next if "#{check_json["#{key}"]["url"]}".nil?
           begin
             puts "Grabbing #{check_json["#{key}"]["name"]}"

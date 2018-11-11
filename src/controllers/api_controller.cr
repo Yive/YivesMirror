@@ -27,7 +27,7 @@ class ApiController < ApplicationController
       table = table + [File.basename(file)]
     end
     table.sort! do |one, two|
-      (File.info("#{Dir.current}/public/files/#{params[:folder].downcase}/#{two}").modification_time.epoch - File.info("#{Dir.current}/public/files/#{params[:folder].downcase}/#{one}").modification_time.epoch).to_i32
+      (File.info("#{Dir.current}/public/files/#{params[:folder].downcase}/#{two}").modification_time.to_unix - File.info("#{Dir.current}/public/files/#{params[:folder].downcase}/#{one}").modification_time.to_unix).to_i32
     end
     return table.to_pretty_json.to_s
   end
@@ -142,7 +142,7 @@ class ApiController < ApplicationController
       "size_bytes" => stat.size,
       "file_name" => filename,
       "date_human" => stat.modification_time.to_s("%B %-d, %Y"),
-      "date_epoch" => stat.modification_time.epoch,
+      "date_epoch" => stat.modification_time.to_unix,
       "mc_version" => version,
       "direct_link" => "https://yivesmirror.com/files/#{params[:folder].downcase}/#{filename}",
       "grab_link" => "https://yivesmirror.com/grab/#{params[:folder].downcase}/#{filename}"

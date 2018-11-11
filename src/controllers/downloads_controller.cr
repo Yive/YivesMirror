@@ -5,7 +5,7 @@ class DownloadsController < ApplicationController
     redirect_to(location: "/", status: 302) if !["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "pocketmine", "nukkit", "hose", "pixelmon"].includes?(params[:folder].downcase)
     files = Dir.glob("#{Dir.current}/public/files/#{params[:folder].downcase}/*")
     files.sort! do |one, two|
-      (File.info(two).modification_time.epoch - File.info(one).modification_time.epoch).to_i32
+      (File.info(two).modification_time.to_unix - File.info(one).modification_time.to_unix).to_i32
     end
     table = {} of String => Hash(String, String)
     versions_file = JSON.parse(File.read("version_manifest.json"))
