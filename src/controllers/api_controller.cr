@@ -10,9 +10,9 @@ class ApiController < ApplicationController
     response.content_type = "application/json"
     if params[:folder] == "all"
       response.status_code = 200
-      return ["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "pocketmine", "nukkit", "hose", "pixelmon"].to_pretty_json.to_s
+      return ["paper", "tacospigot", "thermos", "cauldron", "mcpc", "hexacord", "torch", "hose"].to_pretty_json.to_s
     end
-    return "{\"error\": \"Invalid request.\"}" if !["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "pocketmine", "nukkit", "hose", "pixelmon"].includes?(params[:folder].downcase)
+    return "{\"error\": \"Invalid request.\"}" if !["paper", "tacospigot", "thermos", "cauldron", "mcpc", "hexacord", "torch", "hose"].includes?(params[:folder].downcase)
     response.status_code = 200
     files = Dir.glob("#{Dir.current}/public/files/#{params[:folder].downcase}/*")
     table = [] of String
@@ -35,7 +35,7 @@ class ApiController < ApplicationController
   def file
     response.status_code = 400
     response.content_type = "application/json"
-    return "{\"error\": \"Invalid request.\"}" if !["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "pocketmine", "nukkit", "hose", "pixelmon"].includes?(params[:folder].downcase)
+    return "{\"error\": \"Invalid request.\"}" if !["paper", "tacospigot", "thermos", "cauldron", "mcpc", "hexacord", "torch", "hose"].includes?(params[:folder].downcase)
     if !File.exists?("#{Dir.current}/public/files/#{params[:folder].downcase}/#{params[:file]}")
         return "{\"error\": \"File doesn't exist.\"}"
     end
@@ -49,14 +49,10 @@ class ApiController < ApplicationController
       @name = "TacoSpigot"
     when "Paper"
       @name = "Paper"
-    when "Bungeecord"
-      @name = "BungeeCord"
     when "Hexacord"
       @name = "HexaCord"
     when "Pocketmine"
       @name = "PocketMine"
-    when "Craftbukkit"
-      @name = "CraftBukkit"
     end
     file = "#{Dir.current}/public/files/#{params[:folder].downcase}/#{params[:file]}"
     if file.includes?("filepart")
@@ -82,24 +78,8 @@ class ApiController < ApplicationController
       version = "Unknown"
     end
     versions_file["versions"].as_a.each do |vers|
-      if filename.includes?("SNAPSHOT.1060") || filename.includes?("SNAPSHOT.1000") || filename.includes?("CB1060") || filename.includes?("CB1000")
-        break version = "1.7.3 Beta"
-      elsif filename.includes?(vers["id"].to_s)
+      if filename.includes?(vers["id"].to_s)
         break version = vers["id"].to_s
-      elsif filename.includes?("1.13-pre9")
-        break version = "1.13 PR9"
-      elsif filename.includes?("1.13-pre8")
-        break version = "1.13 PR8"
-      elsif filename.includes?("1.13-pre7")
-        break version = "1.13 PR7"
-      elsif filename.includes?("1.12-pre6")
-        break version = "1.12 PR6"
-      elsif filename.includes?("1.12-pre5")
-        break version = "1.12 PR5"
-      elsif filename.includes?("1.12-pre2")
-        break version = "1.12 PR2"
-      elsif filename.includes?("1-6-6 beta")
-        break version = "1.6.6 Beta"
       end
     end
     if version == "Unknown"
