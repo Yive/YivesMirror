@@ -76,7 +76,7 @@
               <td class="mcversion" rel="<%= entry["version"] %>"><%= entry["version"] %></td>
               <td><%= entry["size"] %></td>
               <td><%= entry["date"] %></td>
-              <td><a class="button is-info" href="/grab/<%= "#{@name}".downcase.gsub("+", "") %>/<%= entry["filename"] %>">Download</a></td>
+              <td><a class="button is-info" href="/grab/<%= "#{@name}".downcase.gsub("+", "") %>/<%= entry["filename"] %>.html">Download</a></td>
             </tr>
           <% end %>
         </table>

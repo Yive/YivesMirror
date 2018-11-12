@@ -6,6 +6,7 @@ class GrabController < ApplicationController
       @filename = "#{params[:filename]}"
       @page = "Download #{@filename}"
       @url = "https://yivesmirror.com/grab/#{params[:folder]}/#{@filename}"
+      render("index.ecr")
     else
       redirect_to(location: "/downloads/#{params[:folder]}", status: 404)
     end
