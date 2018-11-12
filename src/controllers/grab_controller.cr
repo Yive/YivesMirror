@@ -2,8 +2,13 @@ class GrabController < ApplicationController
   def index
     redirect_to(location: "/", status: 302) if !["paper", "tacospigot", "thermos", "cauldron", "mcpc", "hexacord", "torch", "hose"].includes?(params[:folder].downcase)
     @folder = "#{params[:folder]}"
-    if File.exists?("#{Dir.current}/public/files/#{params[:folder]}/#{params[:filename]}")
-      @filename = "#{params[:filename]}"
+    if File.exists?("#{Dir.current}/public/files/#{params[:folder]}/#{params[:filename]}.jar")
+      @filename = "#{params[:filename]}.jar"
+      @page = "Download #{@filename}"
+      @url = "https://yivesmirror.com/grab/#{params[:folder]}/#{@filename}"
+      render("index.ecr")
+    elsif File.exists?("#{Dir.current}/public/files/#{params[:folder]}/#{params[:filename]}.zip")
+      @filename = "#{params[:filename]}.zip"
       @page = "Download #{@filename}"
       @url = "https://yivesmirror.com/grab/#{params[:folder]}/#{@filename}"
       render("index.ecr")
