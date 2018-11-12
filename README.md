@@ -23,6 +23,12 @@ To start your Amber server:
 3. Create and migrate your database with `bin/amber db create migrate`. Also see [creating the database](https://docs.amberframework.org/amber/guides/create-new-app#creating-the-database).
 4. Start Amber server with `bin/amber watch`
 
+If the above doesn't work for you:
+
+1. Follow the quickstar guide for [Amber](https://docs.amberframework.org/amber/getting-started/quick-start).
+2. Install dependencies with `shards install`
+3. Run either `amber watch` or `crystal build ./src/yives_mirror.cr`
+
 Now you can visit http://localhost:3000/ from your browser.
 
 Getting an error message you need help decoding? Check the [Amber troubleshooting guide](https://docs.amberframework.org/amber/troubleshooting), post a [tagged message on Stack Overflow](https://stackoverflow.com/questions/tagged/amber-framework), or visit [Amber on Gitter](https://gitter.im/amberframework/amber).
@@ -39,7 +45,7 @@ crystal spec
 
 ## Contributing
 
-1. Fork it ( https://github.com/your-github-user/yives_mirror/fork )
+1. Fork it ( https://github.com/Yive/yives_mirror/fork )
 2. Create your feature branch ( `git checkout -b my-new-feature` )
 3. Commit your changes ( `git commit -am 'Add some feature'` )
 4. Push to the branch ( `git push origin my-new-feature` )
@@ -47,4 +53,5 @@ crystal spec
 
 ## Contributors
 
-- [your-github-user](https://github.com/your-github-user) your-name-here - creator, maintainer
+- [Yive](https://github.com/Yive) - creator, maintainer
+- [DoNotSpamPls](https://github.com/DoNotSpamPls) - contributor
