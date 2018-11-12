@@ -89,7 +89,7 @@
               <% if @name == "Paper" %>
                 <% @name = "Paper" %>
               <% end %>
-              <td><a class="button is-info" href="/grab/<%= "#{@name}".downcase.gsub("+", "") %>/<%= entry["filename"] %>">Download</a></td>
+              <td><a class="button is-info" href="/grab/<%= "#{@name}".downcase.gsub("+", "") %>/<%= entry["filename"].gsub(".jar", "").gsub(".zip", "") %>">Download</a></td>
             </tr>
           <% end %>
         </table>
