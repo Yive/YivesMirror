@@ -1,8 +1,6 @@
-# yives_mirror
+# Yive's Mirror [![Amber Framework](https://img.shields.io/badge/using-amber_framework-orange.svg)](https://amberframework.org)
 
-[![Amber Framework](https://img.shields.io/badge/using-amber_framework-orange.svg)](https://amberframework.org)
-
-This is a project written using [Amber](https://amberframework.org). Enjoy!
+This is the code that runs the frontend and backend of [Yive's Mirror](https://yivesmirror.com)
 
 ## Getting Started
 
@@ -20,12 +18,11 @@ To start your Amber server:
 
 1. Install dependencies with `shards install`
 2. Build executables with `shards build`
-3. Create and migrate your database with `bin/amber db create migrate`. Also see [creating the database](https://docs.amberframework.org/amber/guides/create-new-app#creating-the-database).
-4. Start Amber server with `bin/amber watch`
+3. Start Amber server with `bin/amber watch`
 
 If the above doesn't work for you:
 
-1. Follow the quickstar guide for [Amber](https://docs.amberframework.org/amber/getting-started/quick-start).
+1. Follow the quick start guide for [Amber](https://docs.amberframework.org/amber/getting-started/quick-start).
 2. Install dependencies with `shards install`
 3. Run either `amber watch` or `crystal build ./src/yives_mirror.cr`
 

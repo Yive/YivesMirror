@@ -2,7 +2,7 @@ require "json"
 
 class DownloadsController < ApplicationController
   def index
-    redirect_to(location: "/", status: 302) if !["spigot", "bukkit", "craftbukkit", "paper", "cauldron", "torch", "tacospigot", "thermos", "mcpc", "hexacord", "pocketmine", "nukkit", "hose", "pixelmon"].includes?(params[:folder].downcase)
+    redirect_to(location: "/", status: 302) if !["paper", "tacospigot", "thermos", "cauldron", "mcpc", "hexacord", "torch", "hose"].includes?(params[:folder].downcase)
     files = Dir.glob("#{Dir.current}/public/files/#{params[:folder].downcase}/*")
     files.sort! do |one, two|
       (File.info(two).modification_time.to_unix - File.info(one).modification_time.to_unix).to_i32
@@ -18,14 +18,10 @@ class DownloadsController < ApplicationController
       @name = "TacoSpigot"
     when "Paper"
       @name = "Paper"
-    when "Bungeecord"
-      @name = "BungeeCord"
     when "Hexacord"
       @name = "HexaCord"
     when "Pocketmine"
       @name = "PocketMine"
-    when "Craftbukkit"
-      @name = "CraftBukkit"
     end
     @page = "#{@name} Downloads"
     @url = "https://yivesmirror.com/downloads/#{params[:folder]}"
@@ -51,24 +47,8 @@ class DownloadsController < ApplicationController
         version = "Unknown"
       end
       versions_file["versions"].as_a.each do |vers|
-        if filename.includes?("SNAPSHOT.1060") || filename.includes?("SNAPSHOT.1000") || filename.includes?("CB1060") || filename.includes?("CB1000")
-          break version = "1.7.3 Beta"
-        elsif filename.includes?(vers["id"].to_s)
+        if filename.includes?(vers["id"].to_s)
           break version = vers["id"].to_s
-        elsif filename.includes?("1.13-pre9")
-          break version = "1.13 PR9"
-        elsif filename.includes?("1.13-pre8")
-          break version = "1.13 PR8"
-        elsif filename.includes?("1.13-pre7")
-          break version = "1.13 PR7"
-        elsif filename.includes?("1.12-pre6")
-          break version = "1.12 PR6"
-        elsif filename.includes?("1.12-pre5")
-          break version = "1.12 PR5"
-        elsif filename.includes?("1.12-pre2")
-          break version = "1.12 PR2"
-        elsif filename.includes?("1-6-6 beta")
-          break version = "1.6.6 Beta"
         end
       end
       if version == "Unknown"

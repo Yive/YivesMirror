@@ -19,9 +19,9 @@ class DownloadController < ApplicationController
         next
       end
       if check == "paper"
-        check_json = Cossack.get("http://auto.tcpr.ca/glb.php?check=paperspigot").body
+        check_json = Cossack.get("https://auto.tcpr.ca/glb.php?check=paperspigot").body
       else
-        check_json = Cossack.get("http://auto.tcpr.ca/glb.php?check=#{check}").body
+        check_json = Cossack.get("https://auto.tcpr.ca/glb.php?check=#{check}").body
       end
       if check_json.empty?
         puts "Skipping #{check}."

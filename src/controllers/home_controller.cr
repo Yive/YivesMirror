@@ -5,4 +5,3 @@ class HomeController < ApplicationController
     render("index.ecr")
   end
 end
-

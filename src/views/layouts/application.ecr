@@ -11,22 +11,10 @@
       <meta property="og:description" content="Downloads for Paper/PaperSpigot." />
       <meta name="description" content="Downloads for Paper/PaperSpigot.">
       <meta name="keywords" content="paper download, paperspigot download, yivesmirror paper, yivesmirror paperspigot">
-    <% elsif @page == "Spigot Downloads" %>
-      <meta property="og:description" content="Downloads for Spigot." />
-      <meta name="description" content="Downloads for Spigot.">
-      <meta name="keywords" content="spigot download, yivesmirror spigot">
     <% elsif @page == "TacoSpigot Downloads" %>
       <meta property="og:description" content="Downloads for TacoSpigot." />
       <meta name="description" content="Downloads for TacoSpigot.">
       <meta name="keywords" content="tacospigot download, yivesmirror tacospigot">
-    <% elsif @page == "CraftBukkit Downloads" %>
-      <meta property="og:description" content="Downloads for CraftBukkit." />
-      <meta name="description" content="Downloads for Craftbukkit.">
-      <meta name="keywords" content="craftbukkit download, yivesmirror craftbukkit">
-    <% elsif @page == "Bukkit Downloads" %>
-      <meta property="og:description" content="Downloads for Bukkit." />
-      <meta name="description" content="Downloads for Bukkit.">
-      <meta name="keywords" content="craftbukkit download, yivesmirror craftbukkit">
     <% elsif @page == "Cauldron Downloads" %>
       <meta property="og:description" content="Downloads for Cauldron." />
       <meta name="description" content="Downloads for Cauldron.">
@@ -75,6 +63,9 @@
       .modal-content .panel .panel-heading {
         border-top-left-radius:0;
         border-top-right-radius:0;
+      }
+      .footer {
+        padding: 2rem 2rem 2rem;
       }
     </style>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -165,7 +156,7 @@
 
       gtag('config', 'UA-52657458-3');
     </script>
-    <script src="/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
     <script>
       function toggleModalClasses(event) {
           var modalId = event.currentTarget.dataset.modalId;
