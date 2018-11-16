@@ -24,19 +24,8 @@ Amber::Server.configure do
   end
 
   routes :web do
-    get "/grab/:folder/:filename",      GrabController, :index
-    # Pages to list files for downloading
-    get "/downloads/:folder",           DownloadsController, :index
-    # Automated downloader controller
-    get "/jdgfh/fgsjkdl/sdjhgklf",      DownloadController, :index
-    # Extra pages
-    get "/",                            HomeController, :index
-    # Api documentation
-    get "/apis",                        ApiController, :index
-    # Lists files in a folder with json response
-    get "/api/list/:folder",            ApiController, :list
-    # Details for a file returned in json
-    get "/api/file/:folder/:file",      ApiController, :file
+    # Homepage
+    get "/", HomeController, :index
   end
 
   routes :api do
