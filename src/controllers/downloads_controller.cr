@@ -2,7 +2,7 @@ require "json"
 
 class DownloadsController < ApplicationController
   def index
-    redirect_to(location: "/", status: 302) if !["paper", "tacospigot", "thermos", "cauldron", "mcpc", "hexacord", "torch", "hose"].includes?(params[:folder].downcase)
+    redirect_to(location: "/", status: 302) if !["paper", "tacospigot", "thermos", "mcpc", "hexacord"].includes?(params[:folder].downcase)
     files = Dir.glob("#{Dir.current}/public/files/#{params[:folder].downcase}/*")
     files.sort! do |one, two|
       (File.info(two).modification_time.to_unix - File.info(one).modification_time.to_unix).to_i32
@@ -16,12 +16,8 @@ class DownloadsController < ApplicationController
       @name = "MCPC+"
     when "Tacospigot"
       @name = "TacoSpigot"
-    when "Paper"
-      @name = "Paper"
     when "Hexacord"
       @name = "HexaCord"
-    when "Pocketmine"
-      @name = "PocketMine"
     end
     @page = "#{@name} Downloads"
     @url = "https://yivesmirror.com/downloads/#{params[:folder]}"
@@ -54,17 +50,6 @@ class DownloadsController < ApplicationController
       if version == "Unknown"
         if filename.includes?("1.5")
           version = "1.5"
-        end
-      end
-      if @name == "Cauldron"
-        if filename.includes?("1.7.10")
-          version = "1.7.10"
-        end
-        if filename.includes?("1.7.2")
-          version = "1.7.2"
-        end
-        if filename.includes?("1.6.4")
-          version = "1.6.4"
         end
       end
       if @name == "HexaCord"

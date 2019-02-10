@@ -13,7 +13,6 @@ Amber::Server.configure do
     plug Amber::Pipe::PoweredByAmber.new
     plug Amber::Pipe::Error.new
     plug Amber::Pipe::Logger.new
-    plug Amber::Pipe::CORS.new
   end
 
   # All static content will run these transformations
@@ -24,11 +23,22 @@ Amber::Server.configure do
   end
 
   routes :web do
-    # Homepage
-    get "/", HomeController, :index
+    get "/grab/:folder/:filename",      GrabController, :index
+    # Pages to list files for downloading
+    get "/downloads/:folder",           DownloadsController, :index
+    # Automated downloader controller
+    get "/update-manifest",             DownloadController, :index
+    # Extra pages
+    get "/",                            HomeController, :index
+    # Api documentation
+    get "/apis",                        ApiController, :index
   end
 
   routes :api do
+    # Lists files in a folder with json response
+    get "/api/list/:folder",            ApiController, :list
+    # Details for a file returned in json
+    get "/api/file/:folder/:file",      ApiController, :file
   end
 
   routes :static do

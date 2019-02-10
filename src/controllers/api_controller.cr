@@ -10,9 +10,9 @@ class ApiController < ApplicationController
     response.content_type = "application/json"
     if params[:folder] == "all"
       response.status_code = 200
-      return ["paper", "tacospigot", "thermos", "cauldron", "mcpc", "hexacord", "torch", "hose"].to_pretty_json.to_s
+      return ["paper", "tacospigot", "thermos", "mcpc", "hexacord"].to_pretty_json.to_s
     end
-    return "{\"error\": \"Invalid request.\"}" if !["paper", "tacospigot", "thermos", "cauldron", "mcpc", "hexacord", "torch", "hose"].includes?(params[:folder].downcase)
+    return "{\"error\": \"Invalid request.\"}" if !["paper", "tacospigot", "thermos", "mcpc", "hexacord"].includes?(params[:folder].downcase)
     response.status_code = 200
     files = Dir.glob("#{Dir.current}/public/files/#{params[:folder].downcase}/*")
     table = [] of String
@@ -35,7 +35,7 @@ class ApiController < ApplicationController
   def file
     response.status_code = 400
     response.content_type = "application/json"
-    return "{\"error\": \"Invalid request.\"}" if !["paper", "tacospigot", "thermos", "cauldron", "mcpc", "hexacord", "torch", "hose"].includes?(params[:folder].downcase)
+    return "{\"error\": \"Invalid request.\"}" if !["paper", "tacospigot", "thermos", "mcpc", "hexacord"].includes?(params[:folder].downcase)
     if !File.exists?("#{Dir.current}/public/files/#{params[:folder].downcase}/#{params[:file]}")
         return "{\"error\": \"File doesn't exist.\"}"
     end
@@ -47,12 +47,8 @@ class ApiController < ApplicationController
       @name = "MCPC+"
     when "Tacospigot"
       @name = "TacoSpigot"
-    when "Paper"
-      @name = "Paper"
     when "Hexacord"
       @name = "HexaCord"
-    when "Pocketmine"
-      @name = "PocketMine"
     end
     file = "#{Dir.current}/public/files/#{params[:folder].downcase}/#{params[:file]}"
     if file.includes?("filepart")
@@ -85,17 +81,6 @@ class ApiController < ApplicationController
     if version == "Unknown"
       if filename.includes?("1.5")
         version = "1.5"
-      end
-    end
-    if @name == "Cauldron"
-      if filename.includes?("1.7.10")
-        version = "1.7.10"
-      end
-      if filename.includes?("1.7.2")
-        version = "1.7.2"
-      end
-      if filename.includes?("1.6.4")
-        version = "1.6.4"
       end
     end
     if @name == "HexaCord"

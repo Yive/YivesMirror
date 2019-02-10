@@ -7,8 +7,6 @@ logging:
   filter:
     - password
     - confirm_password
-  skip:
-    -
   context:
     - request
     - headers
@@ -20,10 +18,15 @@ process_count: 1
 # ssl_cert_file:
 redis_url: "redis://localhost:6379"
 database_url: sqlite3:./db/yives_mirror_development.db
+auto_reload: false
+
 session:
   key: amber.session
   store: signed_cookie
   expires: 0
+
+smtp:
+  enabled: false
 
 secrets:
   description: Store your development secrets credentials and settings here.

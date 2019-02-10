@@ -1,6 +1,6 @@
 class GrabController < ApplicationController
   def index
-    redirect_to(location: "/", status: 302) if !["paper", "tacospigot", "thermos", "cauldron", "mcpc", "hexacord", "torch", "hose"].includes?(params[:folder].downcase)
+    redirect_to(location: "/", status: 302) if !["paper", "tacospigot", "thermos", "mcpc", "hexacord"].includes?(params[:folder].downcase)
     @folder = "#{params[:folder]}"
     if File.exists?("#{Dir.current}/public/files/#{params[:folder]}/#{params[:filename]}.jar")
       @filename = "#{params[:filename]}.jar"
