@@ -52,3 +52,4 @@ crystal spec
 
 - [Yive](https://github.com/Yive) - creator, maintainer
 - [DoNotSpamPls](https://github.com/DoNotSpamPls) - contributor
+- [Masa](https://github.com/masagameplay) - contributor
